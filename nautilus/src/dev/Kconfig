@@ -1,0 +1,97 @@
+menu "Device options"
+
+config SERIAL_REDIRECT
+    bool "Serial Debugging"
+    depends on !HVM_HRT
+    default n
+    help
+        Redirect all printing to serial device
+
+config SERIAL_PORT
+    int "Serial COM Port"
+    range 1 4
+    default "1"
+    help
+      Specifies which serial port to use. E.g. 1 is COM1.
+
+config DEBUG_APIC
+    bool "Debug APIC"
+    depends on DEBUG_PRINTS
+    default n
+    help
+        Turn on debug prints for the LAPIC driver
+
+config DEBUG_IOAPIC
+    bool "DEBUG IOAPIC"
+    depends on DEBUG_PRINTS
+    default n
+    help 
+        Turn on debug prints for the IOAPIC driver
+
+config DEBUG_PCI
+    bool "Debug PCI"
+    depends on DEBUG_PRINTS
+    default n
+    help 
+        Turn on debug prints for PCI devices
+
+config DEBUG_KBD
+    bool "Debug Keyboard"
+    depends on DEBUG_PRINTS
+    default n
+    help
+        Turn on debug prints for the keyboard
+
+config DEBUG_TIMERS
+    bool "Debug Timers"
+    depends on DEBUG_PRINTS
+    default n
+    help
+      Turn on debug prints for timer subsystem
+
+config DEBUG_PIT
+    bool "Debug PIT"
+    depends on DEBUG_PRINTS
+    default n
+    help
+      Turn on debug prints for the i8253/8254 PIT
+
+config HPET
+    bool "HPET Support"
+    depends on X86_64_HOST
+    default n
+    help
+      Includes HPET timer support in Nautilus
+
+config DEBUG_HPET
+    bool "Debug HPET"
+    depends on DEBUG_PRINTS && HPET
+    default n
+    help
+      Turn on debug prints for the HPET
+
+config HZ
+    int "Timer Interrupt Frequency"
+    range 10 10000
+    default "10"
+    help
+        Specifies the default scheduler tick 
+        frequency
+
+
+config VIRTIO_PCI
+    bool "Core Virtio PCI Driver"
+    depends on X86_64_HOST
+    default n
+    help
+      Adds the basic Virtio PCI interface
+
+config DEBUG_VIRTIO_PCI
+    bool "Debug Virtio PCI"
+    depends on DEBUG_PRINTS && VIRTIO_PCI
+    default n
+    help
+      Turn on debug prints for the Virtio 
+endmenu
+
+    

@@ -1,0 +1,1 @@
+ipmitool -I lanplus -H v-test-r415-2-rsa.cs.northwestern.edu -U root -P v3vee\!\! power reset

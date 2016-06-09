@@ -1,0 +1,1 @@
+#define NAUT_CONFIG_DEBUG_APIC 1
